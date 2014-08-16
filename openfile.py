@@ -115,7 +115,7 @@ def main(*args, **kw):
 	n = 0
 	totalStart = time.time()
 	insertCost = 0
-	bucket = Bucket(1000)
+	bucket = Bucket(10000)
 	line = fp.readline()
 	while line != '':
 		n += 1
