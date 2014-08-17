@@ -2,102 +2,13 @@
 #gracehappy # grace@zju.edu.cn # lint@esrichina-bj.cn
 import os
 import time
+class DicTree(object):
+	"""docstring for DicTree"""
+	def __init__(self, arg):
+		super(DicTree, self).__init__()
+		self.arg = arg
+		
 
-
-class Bucket:
-	"""docstirng for Bucket"""
-	def __init__(self, size):
-		if not isinstance(size, int):
-			raise TypeError('size should be a integer')
-		elif size <= 0:
-			raise ValueError('size should be a positive integer')
-		self.__size = size
-		self.__bucket = [None] * self.__size
-		self.setHashFunction()
-	def getsize():
-		return self.__size
-	size = property(getsize)
-	def setHashFunction(self, func = hash):
-		self.hashFunc = func
-	def insert(self, obj):
-		index = self.hashFunc(obj) % self.__size
-		bucketCell = self.__bucket[index]
-		if bucketCell == None:
-			self.__bucket[index] = [self.Node(obj)]
-			return True
-		if obj in bucketCell:
-			innerindex = bucketCell.index(obj)
-			bucketCell[innerindex].add()
-			return True
-		else:
-			bucketCell.append(self.Node(obj))
-			return True
-	def delete(self, obj):
-		index = self.hashFunc(obj) % self.__size
-		bucketCell = self.__bucket[index]
-		if bucketCell == None:
-			return False
-		else:
-			for node in bucketCell:
-				if node.getElement() == obj:
-					if node.dec() == False:
-						del node
-					break
-			else:
-				return False
-			return True
-	def find(self, obj):
-		index = self.hashFunc(obj) % self.__size
-		bucketCell = self.__bucket[index]
-		if bucketCell == None:
-			return False
-		else:
-			for node in bucketCell:
-				if node.getElement() == obj:
-					return True
-			else:
-				return False
-	def findbyindex(self, bucketindex, innerindex):
-		if not isinstance(bucketindex, int) or isinstance(innerindex, int):
-			raise TypeError
-		if bucketindex < 0 or bucketindex >= self.__size:
-			raise ValueError
-		bucketCell = self.__bucket[bucketindex]
-		if innerindex < 0 or innerindex >= len(bucketCell):
-			raise ValueError
-		else:
-			return bucketCell[innerindex].getElement()
-	def getBucket(self):
-		res = []
-		n  = 0
-		for bucketCell in self.__bucket:
-			if bucketCell == None:
-				continue
-			n+=1
-			for node in bucketCell:
-				resnode = [node.getElement(), node.getNumber()]
-				res.append(resnode)
-		return res 
-	def diagram(self):
-		noneNum = 0
-		totalNum = self.__size
-		for idx, bucketCell in enumerate(self.__bucket):
-			if bucketCell == None:
-				noneNum += 1
-	class Node:
-		def __init__(self, element):
-			self.__element = element
-			self.__number = 1
-		def add(self):
-			self.__number += 1
-		def dec(self):
-			self.__number -= 1
-			if self.__number == 0:
-				return False
-		def getNumber(self):
-			return self.__number
-		def getElement(self):
-			return self.__element
 class ConflictException(Exception):
 	def __init__(self, reason):
 		Exception.__init__(self)
