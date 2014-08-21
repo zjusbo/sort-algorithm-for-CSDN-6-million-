@@ -2,8 +2,10 @@
 #gracehappy # grace@zju.edu.cn # lint@esrichina-bj.cn
 import os
 import time
-
-
+insertStart = 0
+bulidNodeCost = 0
+appendNodeCost = 0
+addNumCost = 0
 class Bucket:
 	"""docstirng for Bucket"""
 	def __init__(self, size):
@@ -105,6 +107,7 @@ class ConflictException(Exception):
 
 
 def main(*args, **kw):
+	global insertStart
 	fp = open('www.csdn.net.sql','r')
 	passwords = []
 	count = []
