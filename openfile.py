@@ -4,7 +4,7 @@ import os
 import time
 import threading
 
-maxlenth = 100
+maxlenth = 100000
 def run():
 	fp = open('res.txt','r')
 	res = []
@@ -22,7 +22,7 @@ def run():
 		n += 1
 	ofp = open('finalres.txt','w')
 	for item in res:
-		ofp.write('%s # %s\n' %(item[0], item[1] / ))
+		ofp.write('%s # %.6s%%\n' %(item[0], float(item[1]) / 6428633 * 100))
 	ofp.close()
 	fp.close()
 def insert(item,time, res):
